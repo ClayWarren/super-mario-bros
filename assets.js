@@ -1,30 +1,240 @@
-export const spriteSheet = new Image();
-export const spriteSheetBase64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAAEACAYAAAD61A8xAAABmUlEQVR4nO3cwQ2AMBQEwTz/n4kJKaCGO3g2z2IcdN213wEAwIeAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABCAABC...i...'; // Truncated for brevity
-spriteSheet.src = spriteSheetBase64;
+function createSprite(width, height, drawFn) {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    drawFn(ctx);
+    return canvas;
+}
 
-export const sprites = {
-    mario: { sx: 209, sy: 0, sw: 16, sh: 16 },
-    superMario: { sx: 209, sy: 17, sw: 16, sh: 32 },
-    marioWalk1: { sx: 226, sy: 0, sw: 16, sh: 16 },
-    marioWalk2: { sx: 243, sy: 0, sw: 16, sh: 16 },
-    marioWalk3: { sx: 260, sy: 0, sw: 16, sh: 16 },
-    marioJump: { sx: 345, sy: 0, sw: 16, sh: 16 },
-    goomba: { sx: 0, sy: 16, sw: 16, sh: 16 },
-    goombaWalk1: { sx: 0, sy: 16, sw: 16, sh: 16 },
-    goombaWalk2: { sx: 17, sy: 16, sw: 16, sh: 16 },
-    goombaSquashed: { sx: 34, sy: 16, sw: 16, sh: 16 },
-    koopaTroopa: { sx: 153, sy: 0, sw: 16, sh: 24 },
-    koopaTroopaWalk1: { sx: 153, sy: 0, sw: 16, sh: 24 },
-    koopaTroopaWalk2: { sx: 170, sy: 0, sw: 16, sh: 24 },
-    koopaTroopaShell: { sx: 204, sy: 0, sw: 16, sh: 16 },
-    ground: { sx: 0, sy: 0, sw: 16, sh: 16 },
-    brick: { sx: 16, sy: 0, sw: 16, sh: 16 },
-    question: { sx: 374, sy: 0, sw: 16, sh: 16 },
-    questionUsed: { sx: 391, sy: 0, sw: 16, sh: 16 },
-    mushroom: { sx: 187, sy: 16, sw: 16, sh: 16 },
-    coin: { sx: 374, sy: 17, sw: 16, sh: 16 },
-    flagpole: { sx: 425, sy: 0, sw: 16, sh: 144 },
-    castle: { sx: 442, sy: 0, sw: 80, sh: 80 },
-    fireFlower: { sx: 0, sy: 0, sw: 16, sh: 16 },
-    fireball: { sx: 0, sy: 0, sw: 16, sh: 16 }
-};
+function drawMario(ctx) {
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(4, 0, 8, 4);
+    ctx.fillStyle = '#FFB366';
+    ctx.fillRect(2, 4, 12, 6);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(2, 6, 2, 2);
+    ctx.fillRect(6, 6, 4, 2);
+    ctx.fillRect(12, 6, 2, 2);
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(4, 6, 2, 2);
+    ctx.fillRect(10, 6, 2, 2);
+    ctx.fillStyle = '#FFB366';
+    ctx.fillRect(6, 8, 4, 2);
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(0, 10, 16, 6);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(2, 12, 2, 4);
+    ctx.fillRect(12, 12, 2, 4);
+}
+
+function drawSuperMario(ctx) {
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(4, 0, 8, 4);
+    ctx.fillStyle = '#FFB366';
+    ctx.fillRect(2, 4, 12, 6);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(2, 6, 2, 2);
+    ctx.fillRect(6, 6, 4, 2);
+    ctx.fillRect(12, 6, 2, 2);
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(4, 6, 2, 2);
+    ctx.fillRect(10, 6, 2, 2);
+    ctx.fillStyle = '#FFB366';
+    ctx.fillRect(6, 8, 4, 2);
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(0, 10, 16, 12);
+    ctx.fillStyle = '#0066FF';
+    ctx.fillRect(2, 22, 12, 10);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(2, 28, 2, 4);
+    ctx.fillRect(12, 28, 2, 4);
+}
+
+function drawGoomba(ctx) {
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(0, 0, 16, 12);
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(3, 3, 2, 2);
+    ctx.fillRect(11, 3, 2, 2);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(4, 4, 1, 1);
+    ctx.fillRect(12, 4, 1, 1);
+    ctx.fillStyle = '#654321';
+    ctx.fillRect(0, 12, 16, 4);
+}
+
+function drawKoopaTroopa(ctx) {
+    ctx.fillStyle = '#00AA00';
+    ctx.fillRect(0, 0, 16, 16);
+    ctx.fillStyle = '#FFFF00';
+    ctx.fillRect(2, 2, 12, 6);
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(4, 4, 2, 2);
+    ctx.fillRect(10, 4, 2, 2);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(5, 5, 1, 1);
+    ctx.fillRect(11, 5, 1, 1);
+    ctx.fillStyle = '#654321';
+    ctx.fillRect(0, 16, 16, 8);
+}
+
+function drawKoopaShell(ctx) {
+    ctx.fillStyle = '#00AA00';
+    ctx.fillRect(0, 0, 16, 16);
+    ctx.fillStyle = '#FFFF00';
+    ctx.fillRect(2, 2, 12, 12);
+    ctx.fillStyle = '#00AA00';
+    ctx.fillRect(4, 4, 8, 8);
+}
+
+function drawGround(ctx) {
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(0, 0, 16, 16);
+    ctx.fillStyle = '#654321';
+    for (let i = 0; i < 16; i += 4) {
+        for (let j = 0; j < 16; j += 4) {
+            ctx.fillRect(i, j, 2, 2);
+        }
+    }
+}
+
+function drawBrick(ctx) {
+    ctx.fillStyle = '#CD853F';
+    ctx.fillRect(0, 0, 16, 16);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(0, 0, 16, 1);
+    ctx.fillRect(0, 8, 16, 1);
+    ctx.fillRect(0, 15, 16, 1);
+    ctx.fillRect(0, 0, 1, 8);
+    ctx.fillRect(8, 0, 1, 8);
+    ctx.fillRect(4, 8, 1, 8);
+    ctx.fillRect(12, 8, 1, 8);
+}
+
+function drawQuestion(ctx) {
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(0, 0, 16, 16);
+    ctx.fillStyle = '#FF8C00';
+    ctx.fillRect(0, 0, 16, 1);
+    ctx.fillRect(0, 15, 16, 1);
+    ctx.fillRect(0, 0, 1, 16);
+    ctx.fillRect(15, 0, 1, 16);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(6, 3, 2, 6);
+    ctx.fillRect(4, 5, 6, 2);
+    ctx.fillRect(7, 11, 2, 2);
+}
+
+function drawQuestionUsed(ctx) {
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(0, 0, 16, 16);
+    ctx.fillStyle = '#654321';
+    for (let i = 0; i < 16; i += 4) {
+        for (let j = 0; j < 16; j += 4) {
+            ctx.fillRect(i, j, 2, 2);
+        }
+    }
+}
+
+function drawMushroom(ctx) {
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(0, 0, 16, 8);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(2, 2, 3, 3);
+    ctx.fillRect(11, 2, 3, 3);
+    ctx.fillStyle = '#FFB366';
+    ctx.fillRect(4, 8, 8, 8);
+}
+
+function drawCoin(ctx) {
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(4, 0, 8, 16);
+    ctx.fillStyle = '#FFA500';
+    ctx.fillRect(6, 2, 4, 12);
+}
+
+function drawFlagpole(ctx) {
+    ctx.fillStyle = '#00AA00';
+    ctx.fillRect(14, 0, 2, 144);
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(0, 0, 14, 10);
+}
+
+function drawCastle(ctx) {
+    ctx.fillStyle = '#8B8B8B';
+    ctx.fillRect(0, 40, 80, 40);
+    ctx.fillStyle = '#696969';
+    ctx.fillRect(0, 20, 20, 20);
+    ctx.fillRect(60, 20, 20, 20);
+    ctx.fillRect(20, 0, 40, 40);
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(35, 50, 10, 20);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(37, 45, 6, 5);
+}
+
+function drawFireFlower(ctx) {
+    ctx.fillStyle = '#FF4500';
+    ctx.fillRect(0, 0, 16, 8);
+    ctx.fillStyle = '#FFFF00';
+    ctx.fillRect(2, 2, 3, 3);
+    ctx.fillRect(11, 2, 3, 3);
+    ctx.fillStyle = '#00AA00';
+    ctx.fillRect(4, 8, 8, 8);
+}
+
+function drawFireball(ctx) {
+    ctx.fillStyle = '#FF4500';
+    ctx.fillRect(2, 2, 12, 12);
+    ctx.fillStyle = '#FFFF00';
+    ctx.fillRect(4, 4, 8, 8);
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(6, 6, 4, 4);
+}
+
+let sprites = null;
+
+export function initializeSprites() {
+    if (sprites) return sprites;
+    
+    sprites = {
+        mario: createSprite(16, 16, drawMario),
+        superMario: createSprite(16, 32, drawSuperMario),
+        marioWalk1: createSprite(16, 16, drawMario),
+        marioWalk2: createSprite(16, 16, drawMario),
+        marioWalk3: createSprite(16, 16, drawMario),
+        marioJump: createSprite(16, 16, drawMario),
+        goomba: createSprite(16, 16, drawGoomba),
+        goombaWalk1: createSprite(16, 16, drawGoomba),
+        goombaWalk2: createSprite(16, 16, drawGoomba),
+        goombaSquashed: createSprite(16, 16, (ctx) => {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(0, 12, 16, 4);
+        }),
+        koopaTroopa: createSprite(16, 24, drawKoopaTroopa),
+        koopaTroopaWalk1: createSprite(16, 24, drawKoopaTroopa),
+        koopaTroopaWalk2: createSprite(16, 24, drawKoopaTroopa),
+        koopaTroopaShell: createSprite(16, 16, drawKoopaShell),
+        ground: createSprite(16, 16, drawGround),
+        brick: createSprite(16, 16, drawBrick),
+        question: createSprite(16, 16, drawQuestion),
+        questionUsed: createSprite(16, 16, drawQuestionUsed),
+        mushroom: createSprite(16, 16, drawMushroom),
+        coin: createSprite(16, 16, drawCoin),
+        flagpole: createSprite(16, 144, drawFlagpole),
+        castle: createSprite(80, 80, drawCastle),
+        fireFlower: createSprite(16, 16, drawFireFlower),
+        fireball: createSprite(16, 16, drawFireball)
+    };
+    
+    return sprites;
+}
+
+export function getSprites() {
+    if (!sprites) {
+        initializeSprites();
+    }
+    return sprites;
+}

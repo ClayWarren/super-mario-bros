@@ -18,8 +18,21 @@ The following features have been implemented:
 
 *   `index.html`: The main HTML file.
 *   `style.css`: CSS for styling the game.
-*   `game.js`: The core game logic, including the game loop, physics, collision detection, and rendering.
+*   `main.js`: The main entry point for the game.
+*   `assets.js`: Manages loading and accessing game assets (sprite sheet, sprites).
+*   `game.js`: Manages global game state variables.
+*   `level.js`: Manages current level data and loading levels.
+*   `levels.js`: Contains definitions for various game levels.
+*   `player.js`: Manages the player's state and behavior.
+*   `enemy.js`: Manages the enemies' state and behavior.
+*   `powerups.js`: Manages power-ups and fireballs.
+*   `camera.js`: Manages the game camera.
+*   `input.js`: Handles player input.
+*   `collision.js`: Provides collision detection logic.
+*   `gameLoop.js`: Contains the core game loop logic (update and draw functions).
+*   `game.legacy.js`: The original monolithic game logic file (for reference).
 
 ## Notes
 
-*   The sprite sheet and sound effects are embedded in the `game.js` and `index.html` files as base64 strings to keep the project self-contained.
+*   The sprite sheet is embedded in `main.js` and sound effects are embedded in `index.html` as base64 strings to keep the project self-contained.
+*   Due to browser security restrictions (CORS policy), the game must be served from a local web server to load JavaScript modules correctly. Refer to `README.md` for instructions on how to run a local web server.
